@@ -16,11 +16,10 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        String url = getIntent().getExtras().getString("url");
+        //String url = getIntent().getExtras().getString("url");
         ImageView imgView = (ImageView)findViewById(R.id.imageView);
         imgView.setImageURI(null);
-        Picasso.get().load(url).into(imgView);
-
+        //Picasso.get().load(url).into(imgView);
     }
 
     public void back(View w) throws IOException {
