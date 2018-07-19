@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,7 +21,7 @@ public class AboutActivity extends AppCompatActivity {
 
     public int idx_image = 0;
     public JSONArray image_list;
-
+    public List<RequestCreator> load_list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +41,11 @@ public class AboutActivity extends AppCompatActivity {
             image_list = new JSONArray(url);
             ImageView imgView = (ImageView)findViewById(R.id.imageView);
             imgView.setImageURI(null);
-            Picasso.get().load(image_list.getString(idx_image)).into(imgView);
+            for (int i = 0; i < image_list.length(); i++) {
+                load_list.add(Picasso.get().load(image_list.getString(i)));
+            }
+
+            load_list.get(idx_image).into(imgView);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -57,24 +62,16 @@ public class AboutActivity extends AppCompatActivity {
     public void prev(View w) {
         ImageView imgView = (ImageView)findViewById(R.id.imageView);
         if(idx_image > 0) {
-            try {
-                idx_image--;
-                Picasso.get().load(image_list.getString(idx_image)).into(imgView);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            idx_image--;
+            load_list.get(idx_image).into(imgView);
         }
     }
 
     public void next(View w) throws IOException {
         ImageView imgView = (ImageView)findViewById(R.id.imageView);
         if(idx_image < image_list.length() - 1) {
-            try {
-                idx_image++;
-                Picasso.get().load(image_list.getString(idx_image)).into(imgView);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            idx_image++;
+            load_list.get(idx_image).into(imgView);
         }
     }
 
