@@ -24,7 +24,7 @@ dependencies {
     // Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
 
-// JSON Parsing
+    // JSON Parsing
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.loopj.android:android-async-http:1.4.9'

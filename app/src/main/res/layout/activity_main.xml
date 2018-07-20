@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#242424"
-    android:theme="@style/Theme.MaterialComponents"
+    android:theme="@style/UNREALTheme"
 
     tools:context=".MainActivity">
 
@@ -91,7 +91,6 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:background="#101010"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
